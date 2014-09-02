@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+{% block title %}CIC3 Admin{% endblock %}
+
+{% block content %}
+        <p class="lead">
+            Registration
+         </p>
+         {% if isreg %}
+         <div><p> Thank you for Registering !! <a href="/index"> Go Back!</a>
+         </p></div>
+         {% else %}
+         <div class="six columns">
+         <form method="POST" action="" class="main">
+            {{ form.hidden_tag() if form.hidden_tag }}
+            {% for f in form if f.type != 'CSRFTokenField' %}
+            <div>
+            {{ f.label }}
+            {{ f }}
+            {% if f.errors %}
+            <ul>
+               {% for e in f.errors %}
+               <li class="error">{{ e }}</li>
+               {% endfor %}
+            </ul>
+            {% endif %}
+            </div>
+            {% endfor %}
+            <button class="btn" type="submit">Submit</button>
+
+         </form>
+         </div>
+         <div>
+            For Resending mail <a href="{{ url_for('resend') }}Click here</a>
+
+        {% endif %}
+{% endblock %}

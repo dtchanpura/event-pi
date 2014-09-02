@@ -1,0 +1,70 @@
+.meta {
+   font-size: small;
+}
+div.fillbg {
+  background-color:#eee;
+  text-decoration: none;
+  color:#111;
+  padding:15px;
+
+}
+div.fillbg:hover {
+  background-color:#444;
+  color:#ddd;
+}
+div.fillbg:hover .meta{
+   color: #ccc;
+   font-size: small;
+}
+div.fillbg span {
+   font-style:bold;
+}
+a.fillbg{
+ text-decoration: none;
+ padding: 0px;
+}
+
+a.fillbg:hover {
+  color:#222;
+}
+
+.posts a, .posts a:hover .posts.a:visited {
+   text-decoration:none;
+}
+
+strong { font-weight: bold; }
+
+li.error{
+	color:#F43;
+
+}
+.dark {
+   color:#ddd;
+   background:#555;
+   padding: 5px;
+}
+.light {
+   color:#999;
+   background:#eee;
+   padding: 5px;
+   padding-right: 0px;
+   font-weight: normal;
+}
+.post {
+   text-align:justify;
+   margin: auto;
+}
+
+.nav {
+   margin: auto;
+   text-align: center;
+}
+.nav a {
+   text-decoration: none;
+   padding: 5px;
+   color: #555;
+}
+
+.nav a:hover {
+   color: #000;
+}

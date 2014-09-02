@@ -1,0 +1,25 @@
+<html>
+  <head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static',filename='css/main.css') }}">
+	<link rel=stylesheet type=text/css href="{{ url_for('static',filename='css/skeleton.css') }}">
+	<link rel=stylesheet type=text/css href="{{ url_for('static',filename='css/layout.css') }}">
+	<link rel=stylesheet type=text/css href="{{ url_for('static',filename='css/base.css') }}">
+	<title>{% block title %}CiC3{% endblock %}</title>
+  </head>
+  <body>
+<div class="container">
+	<div class="sixteen columns">
+		<h2 class="remove-bottom" style="margin-top: 40px; ">
+		<center>
+		<strong class="light">{% block pagename %}CiC3{% endblock %}</strong>
+		</center>
+		</h2>
+		<div class="fourteen columns" id="content">
+		{% block content %}
+		Default Content
+		{% endblock %}
+		</div>
+	</div>
+</div>
+</body>
+</html>
