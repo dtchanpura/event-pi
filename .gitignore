@@ -1,10 +1,11 @@
 config.py
 qr.png
+qr_temp.png
 app.db
-env~~
+env_pi
 env
 WSGI.py
 run2.py
 runwithhw.py
 attendance_1.py
-
+*.pyc
