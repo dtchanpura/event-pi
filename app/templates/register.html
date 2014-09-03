@@ -9,13 +9,12 @@
          <div><p> Thank you for Registering !! <a href="/index"> Go Back!</a>
          </p></div>
          {% else %}
-         <div class="six columns">
+         <div class="eight columns left-section">
          <form method="POST" action="" class="main">
             {{ form.hidden_tag() if form.hidden_tag }}
             {% for f in form if f.type != 'CSRFTokenField' %}
-            <div>
-            {{ f.label }}
-            {{ f }}
+            <div class="formcontainer">
+            <span class="two columns">{{ f.label }}</span><span class="five columns">{{ f }}</span>
             {% if f.errors %}
             <ul>
                {% for e in f.errors %}
@@ -29,8 +28,8 @@
 
          </form>
          </div>
-         <div>
-            For Resending mail <a href="{{ url_for('resend') }}Click here</a>
-
+         <div class="five columns">
+            For Resending mail <a href="{{ url_for('resendmail') }}">Click here</a>
+         </div>
         {% endif %}
 {% endblock %}

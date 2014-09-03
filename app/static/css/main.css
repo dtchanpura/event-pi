@@ -28,10 +28,6 @@ a.fillbg:hover {
   color:#222;
 }
 
-.posts a, .posts a:hover .posts.a:visited {
-   text-decoration:none;
-}
-
 strong { font-weight: bold; }
 
 li.error{
@@ -50,21 +46,13 @@ li.error{
    padding-right: 0px;
    font-weight: normal;
 }
-.post {
-   text-align:justify;
-   margin: auto;
-}
 
-.nav {
-   margin: auto;
-   text-align: center;
+.right-section {
+   border-left: thin solid #222;
 }
-.nav a {
-   text-decoration: none;
-   padding: 5px;
-   color: #555;
+.left-section {
+   border-right: thin solid #222;
 }
-
-.nav a:hover {
-   color: #000;
+.formcontainer span {
+   display: inline-block;
 }
