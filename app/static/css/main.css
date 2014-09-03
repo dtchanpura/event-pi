@@ -56,3 +56,11 @@ li.error{
 .formcontainer span {
    display: inline-block;
 }
+.log_table td {
+      border-color: #444;
+      border-width: thin;
+      padding: 5px;
+}
+.log_table tr {
+      border-color: #333;
+}

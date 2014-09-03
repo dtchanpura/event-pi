@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request, flash
 from app import app, db, mail
 from flask.ext.mail import Message
-from forms import RegistrationForm, ResendMail
+from forms import RegistrationForm, ResendMail, AdminLogin
 from app.models import User, Logs
 from qrcode import QRCode, ERROR_CORRECT_H, ERROR_CORRECT_L
 from hashlib import sha1
@@ -74,11 +74,10 @@ def resendmail():
       return render_template('resend.html',issent=True)
    return render_template('resend.html', form=form, issent=False)
 
-@app.route('/adminpanel')
+@app.route('/adminpanel', methods=['GET','POST'])
 def adminpanel():
-   logs=Logs.query.\
-      filter(timestamp > datetime.timedelta(days = 2),
-         models.Logs.timestamp <= datetime.datetime.today()
-         ).all()
-
-   return render_template('admin.html',logs=logs)
+   form = AdminLogin(request.form)
+   if request.method == 'POST' and form.validate_on_submit():
+      logs = form.getMetaData()
+      return render_template('admin.html',isauth=True, logs=logs)
+   return render_template('admin.html',form=form, isauth=False)

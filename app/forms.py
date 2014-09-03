@@ -1,8 +1,10 @@
 from flask.ext.wtf import Form #, RecaptchaField
 from wtforms import TextField, BooleanField, TextAreaField, PasswordField
 from wtforms.validators import Required, Length, ValidationError, Email
-from app.models import User
+from app.models import User, Logs
 from app import db
+import hashlib
+import datetime
 
 
 class RegistrationForm(Form):
@@ -34,10 +36,14 @@ class AdminLogin(Form):
          return False
       else:
          return True'''
+   def validate_on_submit(self):
+      #Form.Validate()
+      return hashlib.sha1(self.password.data).hexdigest()=='a9ee4a53fb4f12777beb4b85792b871fb5c43df0'
+
    def getMetaData(self):
       return db.session.query(User, Logs).\
-         filter(timestamp > datetime.timedelta(days = 1), 
-               timestamp <= datetime.datetime.today()).\
+         filter(Logs.timestamp > datetime.timedelta(days = 1),
+               Logs.timestamp <= datetime.datetime.today()).\
                join(Logs).all()
 
 

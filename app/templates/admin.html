@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+{% block title %}CIC3 Admin{% endblock %}
+
+{% block content %}
+        <p class="lead">
+            Admin Panel
+         </p>
+         {% if isauth %}
+         <table class="log_table">
+         {% for log in logs %}
+            <tr>
+               <td>{{ log[1].timestamp }}</td>
+               <td>{{ log[0].first_name }}</td>
+               <td>{{ log[0].last_name }}</td>
+               <td>{{ log[0].college_name }}</td>
+               <td>{{ log[0].email }}</td>
+               <td>{{ log[0].username }}</td>
+            </tr>
+         {% endfor %}
+         </table>
+         {% else %}
+         <div class="eight columns left-section">
+
+
+         <div>Forgot where you kept it.. Just type down your Email..</div><br>
+            <form action="" method="POST">
+               {{ form.hidden_tag() if form.hidden_tag }}
+               {% for f in form if f.type != 'CSRFTokenField' %}
+               <div>
+               {{ f.label }}
+               {{ f }}
+               {% if f.errors %}
+               <ul>
+                  {% for e in f.errors %}
+                  <li class="error">{{ e }}</li>
+                  {% endfor %}
+               </ul>
+               {% endif %}
+               </div>
+               {% endfor %}
+               <button class="btn" type="submit">Submit</button>
+            </form>
+         </div>
+         <div class="five columns">
+            For Registering <a href="{{ url_for('register') }}">Click here</a>
+         </div>
+        {% endif %}
+{% endblock %}
