@@ -9,3 +9,5 @@ run2.py
 runwithhw.py
 attendance_1.py
 *.pyc
+*.png
+QRS/

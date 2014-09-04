@@ -25,7 +25,14 @@ def register():
       #user.password = generate_password_hash(user.password)
       user.qr_data = sha1(user.email).hexdigest()
 
-      qr = QRCode(version=10, error_correction=ERROR_CORRECT_H)
+      #qr = QRCode(version=10, error_correction=ERROR_CORRECT_H)
+
+      qr = qrcode.QRCode(
+         version=6,
+         border=4,
+         box_size=5,
+         error_correction=qrcode.constants.ERROR_CORRECT_Q)
+
       qr.add_data(user.qr_data)
       qr.make() # Generate the QRCode itself
       #im contains a PIL.Image.Image object
