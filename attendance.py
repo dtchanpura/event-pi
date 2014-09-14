@@ -6,21 +6,25 @@ import os
 import RPi.GPIO as GPIO
 from subprocess import *
 import datetime
-strpath = "/home/darshil/"
+strpath = ""
 strfile = "webcam"
 IRPin=17
 LEDRed=22
 LEDGrn=23
+LEDScan=27
 global flagProx
 flagProx=False
-debug = True
+debug = False
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(IRPin, GPIO.IN)
 GPIO.setup(LEDRed, GPIO.OUT)
 GPIO.setup(LEDGrn, GPIO.OUT)
+GPIO.setup(LEDScan, GPIO.OUT)
+
 GPIO.output(LEDGrn, GPIO.LOW);
 GPIO.output(LEDRed, GPIO.LOW);
+GPIO.output(LEDScan, GPIO.LOW);
 
 def run_cmd(cmd):
    p = Popen(cmd, shell=True, stdout=PIPE)
@@ -34,6 +38,7 @@ def capture():
    GPIO.output(LEDRed, GPIO.HIGH)
 
 def scan():
+   GPIO.output(LEDScan, GPIO.HIGH)
    scanned=''
    count=0
    global flagProx
@@ -41,7 +46,7 @@ def scan():
       count = count + 1
       capture()
       scanned=run_cmd("zbarimg "+strpath+strfile+".jpg")
-      GPIO.output(LEDRed, GPIO.HIGH);
+      #GPIO.output(LEDRed, GPIO.HIGH);
       if count == 10:
          flagProx=False
 

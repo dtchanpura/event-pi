@@ -12,3 +12,4 @@ attendance_1.py
 *.pyc
 *.png
 QRS/
+*.db

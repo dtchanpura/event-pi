@@ -1,4 +1,4 @@
-#!/home/darshil/MyApp/env/bin/python
+#!/home/darshil/RPi/MyApp/venv/bin/python
 from app import app, db
 
 db.create_all()

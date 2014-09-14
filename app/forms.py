@@ -1,19 +1,19 @@
 from flask.ext.wtf import Form #, RecaptchaField
-from wtforms import TextField, BooleanField, TextAreaField, PasswordField
+from wtforms import TextField, BooleanField, TextAreaField, PasswordField, DateTimeField, IntegerField, FileField
 from wtforms.validators import Required, Length, ValidationError, Email
-from app.models import User, Logs
+from wtforms.widgets import html_params
+from app.models import User, Events, connection_table
 from app import db
 import hashlib
-import datetime
+from datetime import datetime, timedelta
 
-
+###
 class RegistrationForm(Form):
    username = TextField(validators = [Required()])
    email = TextField(validators = [Email()])
    first_name = TextField()
    last_name = TextField()
-   enrollment = TextField()
-   college_name = TextField()
+   college_name = TextField('College/Organization')
    #password = fields.PasswordField(validators=[validators.required()])
 
    def validate_on_submit(self):
@@ -56,3 +56,42 @@ class ResendMail(Form):
          return False
       else:
          return True
+
+class NewEventForm(Form):
+  event_name = TextField(validators=[Required()])
+  address = TextAreaField()
+  start_date = DateTimeField(default=datetime.today(), format='%d-%m-%y %H:%M')
+  end_date = DateTimeField(default=datetime.today() + timedelta(days = 1), format='%d-%m-%y %H:%M')
+  fees = IntegerField()
+
+  def validate_on_submit(self):
+    if not Form.validate(self):
+      return False
+    if self.start_date.data == self.end_date.data and self.start_time.data > self.end_time.data:
+      self.fees.errors.append('Start Time is later then End Time')
+      return False
+    elif self.start_date.data > self.end_date.data:
+      self.fees.errors.append('Start Time is later then End Time')
+      return False
+    else:
+      return True
+
+class UserData(Form):
+  filehandle = FileField()
+  def upload_file():
+    if request.method == 'POST':
+        file = request.files['file']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('uploaded_file',
+                                    filename=filename))
+    return '''
+    <!doctype html>
+    <title>Upload new File</title>
+    <h1>Upload new File</h1>
+    <form action="" method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+         <input type=submit value=Upload>
+    </form>
+    '''
