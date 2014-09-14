@@ -1,0 +1,14 @@
+{% if isauth %}
+<table class="log_table">
+{% for log in logs %}
+   <tr>
+      <td>{{ log[1].timestamp }}</td>
+      <td>{{ log[0].first_name }}</td>
+      <td>{{ log[0].last_name }}</td>
+      <td>{{ log[0].college_name }}</td>
+      <td>{{ log[0].email }}</td>
+      <td>{{ log[0].username }}</td>
+   </tr>
+{% endfor %}
+</table>
+{% endif %}

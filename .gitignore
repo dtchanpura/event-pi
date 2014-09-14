@@ -4,6 +4,7 @@ qr_temp.png
 app.db
 env_pi
 env
+venv
 WSGI.py
 run2.py
 runwithhw.py

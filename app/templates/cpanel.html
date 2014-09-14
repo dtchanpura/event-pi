@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+{% block title %}EventPi Admin{% endblock %}
+
+{% block content %}
+  <p class="lead">
+    Event Management
+  </p>
+  {% if data|length > 0 %}
+    <div>
+      <!-- List of Events if any -->
+    <table class="log_table">
+      <div class="thirteen columns"><tr>
+       <b><td>Sr.No.</td>
+       <td>Event Name</td>
+       <td>Address</td>
+       <td>Fees</td>
+       <td>Date/Time Start</td>
+       <td>Date/Time End</td></b>
+    </tr></div>
+    {% for event in data %}
+
+         <div><tr>
+           <td><a href="{{ url_for('eventdetails', event_id = event.id) }}">{{ event.id }}</a></td>
+          <td><a href="{{ url_for('eventdetails', event_id = event.id) }}">{{ event.event_name }}</a></td>
+          <td><a title="{{ event.address }}">{{ event.address|truncate(10) }}</a></td>
+          <td>{{ event.fees }}</td>
+          <td>{{ event.start_date | strftime }}</td>
+          <td>{{ event.end_date | strftime }}</td></a>
+       </tr></div>
+    {% endfor %}
+
+    </table>
+    <a href="{{ url_for('addevent') }}"><button class="btn">Add new Event</button></a>
+    <a href="/index"><button class="btn">Back</button></a>
+    </div>
+  {% else %}
+    <p>You don't have any events yet..</p>
+    <a href="{{ url_for('addevent') }}"><button class="btn">Add new Event</button></a>
+  {% endif %}
+{% endblock %}

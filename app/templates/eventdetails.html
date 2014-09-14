@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+{% block title %}EventPi Admin{% endblock %}
+
+{% block content %}
+        <p class="lead">
+          Event Details
+        </p>
+        <hr />
+        <ul>
+          <li><span>Event No.:</span> {{ event_id }} </li>
+          <li><span>Name:</span>  {{ eventdata.event_name }} </li>
+          <li><span>Address:</span> {{ eventdata.address }} </li>
+          <li><span>Fees:</span> {% if eventdata.fees %} {{ eventdata.fees }} {% else %} Free {% endif %} </li>
+          <li><span>From:</span> {{eventdata.start_date|strftime(format="%d %B %Y, %A")}}</li>
+          <li><span>To:</span>  {{eventdata.end_date|strftime(format="%d %B %Y, %A")}} </li>
+        </ul>
+        <a href="{{ url_for('adduser',event_id = event_id) }}"><button class="btn">Add new User</button></a>
+        <a href="{{ url_for('delete_event',event_id=event_id) }}"><button class="btn">Delete Event</button></a>
+
+
+{% endblock %}
+        <!-- <a href="{{ url_for('log', pk=event_id) }}"><button class="btn">View Event Log</button></a>
+            <a href="{{ url_for('adduserdata',pk=event_id) }}"><button class="btn">Add Users Data in CSV Format</button></a> -->
