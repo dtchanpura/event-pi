@@ -1,5 +1,11 @@
+## Event-Pi
+
+A small and simple event management tool for everyone...
+[Get EventPi](http://geteventpi.com)
+
 ###Start
 
-Landing Page =   cpanel.html | Function cpanel
-                Redirects to Events console or add event | back to cpanel
-                Then to add user data and details and logs | back to event console
+####Webpage Tree
+
+
+####Backend Tree
