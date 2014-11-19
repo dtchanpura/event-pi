@@ -13,8 +13,12 @@
           <li><span>Fees:</span> {% if eventdata.fees %} {{ eventdata.fees }} {% else %} Free {% endif %} </li>
           <li><span>From:</span> {{eventdata.start_date|strftime(format="%d %B %Y, %A")}}</li>
           <li><span>To:</span>  {{eventdata.end_date|strftime(format="%d %B %Y, %A")}} </li>
+          <li><span>Attendees:</span>  {{ cnt }} </li>
+
         </ul>
         <a href="{{ url_for('adduser',event_id = event_id) }}"><button class="btn">Add new User</button></a>
+        <a href="{{ url_for('show_users',event_id=event_id) }}" target="_blank"><button class="btn">View Users</button></a>
+
         <a href="{{ url_for('delete_event',event_id=event_id) }}"><button class="btn">Delete Event</button></a>
 
 

@@ -2,17 +2,18 @@ from flask.ext.wtf import Form #, RecaptchaField
 from wtforms import TextField, BooleanField, TextAreaField, PasswordField, DateTimeField, IntegerField, FileField
 from wtforms.validators import Required, Length, ValidationError, Email
 from wtforms.widgets import html_params
-from app.models import User, Events, connection_table
+from app.models import User, Events
 from app import db
 import hashlib
 from datetime import datetime, timedelta
 
 ###
 class RegistrationForm(Form):
-   username = TextField(validators = [Required()])
-   email = TextField(validators = [Email()])
+   #username = TextField(validators = [Required()])
    first_name = TextField()
    last_name = TextField()
+   email = TextField(validators = [Email()])
+
    college_name = TextField('College/Organization')
    #password = fields.PasswordField(validators=[validators.required()])
 
@@ -20,10 +21,10 @@ class RegistrationForm(Form):
       rv = Form.validate(self)
       if not rv:
          return False
-      if db.session.query(User).filter_by(username = self.username.data).count() > 0:
-         self.username.errors.append('Duplicate username')
-         return False
-      elif db.session.query(User).filter_by(email = self.email.data).count() > 0:
+      #if db.session.query(User).filter_by(username = self.username.data).count() > 0:
+      #   self.username.errors.append('Duplicate username')
+      #   return False
+      if db.session.query(User).filter_by(email = self.email.data).count() > 0:
          self.email.errors.append('Duplicate Email')
          return False
       else:
