@@ -5,7 +5,7 @@ A small and simple event management tool for everyone...
 
 ###Start here
 For most of the testing purposes we are created a virtual environment which might not be available. To do so we have provided a ```requirements.txt``` file following will create a new virtual python runtime environment and we will install those packages locally in this folder.
-```
+```sh
 event-pi/$ virtualenv venv
 event-pi/$ venv/bin/pip install -r requirements.txt
 ```
