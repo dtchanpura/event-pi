@@ -17,7 +17,7 @@ event-pi/$ venv/bin/pip install -r requirements.txt
 ####Backend Tree
 The basic structure of our database is containing three table as follows
 
-![Database Overview](./images/db_overview.png "Database Overview")
+![Database Overview](https://dl.dropboxusercontent.com/u/93136802/eventpi/db_overview.png "Database Overview")
 
 As it can be understood the user table has the data related to user and all details like name, contact informantion and qr_data (which will be stored in the QR code) in same way the other table event_details will have details about the event which are been organized.
 
