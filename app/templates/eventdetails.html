@@ -17,6 +17,7 @@
 
         </ul>
         <a href="{{ url_for('adduser',event_id = event_id) }}"><button class="btn">Add new User</button></a>
+        <a href="{{ url_for('adduserdata',event_id = event_id) }}"><button class="btn">Add User Data</button></a>
         <a href="{{ url_for('show_users',event_id=event_id) }}" target="_blank"><button class="btn">View Users</button></a>
 
         <a href="{{ url_for('delete_event',event_id=event_id) }}"><button class="btn">Delete Event</button></a>
