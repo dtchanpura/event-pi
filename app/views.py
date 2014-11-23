@@ -12,7 +12,7 @@ import os
 def sendmail(mail_id):
    msg = Message("Your Attendance QR-Code.",
             recipients=[mail_id],
-            sender=app.config['DEFAULT_SENDER'],#'cic3@gtu.ac.in',
+            sender='abc@123.com',#app.config['DEFAULT_SENDER'],#'cic3@gtu.ac.in',
             html="<p>&nbsp;&nbsp;&nbsp;QR code has been generated please display it near the system while coming. This QR-Code is secret any violation will subject invalidation.</p>"
             )
    with app.open_resource("../qr.png") as fp:
