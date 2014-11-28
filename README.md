@@ -9,6 +9,15 @@ For most of the testing purposes we are created a virtual environment which migh
 ~/event-pi$ virtualenv venv
 ~/event-pi$ venv/bin/pip install -r requirements.txt
 ```
+For running the server it needs this `venv` folder which has this binary files for Python. To run just type down
+```sh
+~/event-pi$ venv/bin/python run.py
+```
+This will start server according to the `config.py` file which is to be renamed right after the setup. To start the local SMTP server for logs on mail we need to use python's `smtpd` as follows.
+```sh
+python -m smtpd -n -c DebuggingServer localhost:25
+```
+> If this gives error try running it as administrator/sudo.
 
 To be added..
 
